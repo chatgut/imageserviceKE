@@ -19,4 +19,5 @@ public class Image {
     @Lob
     @Column(length = 25000000)
     private byte[] imageBytes;
+    private String contentType;
 }
