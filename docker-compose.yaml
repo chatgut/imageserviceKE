@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  imageservice:
+    image: imageservicefuckoff:latest
+    depends_on:
+      - imageserviceke-mysql
+    ports:
+      - "8042:8042"
+    environment:
+      DB_URL: imageserviceke-mysql:3306/imageserviceke-mysql
+      DB_USER: developer
+      DB_PASS: password
+  imageserviceke-mysql:
+    image: "mysql:latest"
+    container_name: imageserviceke-mysql
+    volumes:
+      - db_mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: imageserviceke-mysql
+      MYSQL_USER: developer
+      MYSQL_PASSWORD: password
+      MYSQL_HOST: '%'
+    ports:
+      - "3306:3306"
+
+volumes:
+  db_mysql:
