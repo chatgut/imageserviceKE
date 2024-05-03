@@ -17,5 +17,6 @@ public class Image {
     private Long id;
     private String name;
     @Lob
+    @Column(length = 25000000)
     private byte[] imageBytes;
 }
