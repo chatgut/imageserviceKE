@@ -23,7 +23,7 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @PostMapping()
+   /* @PostMapping()
     String saveMultipleImages(@RequestParam("img") Collection<MultipartFile> files,
                               HttpServletRequest request) throws IOException {
         Collection<String> urls = new ArrayList<>();
@@ -33,7 +33,13 @@ public class ImageController {
             urls.add(baseUrl + "/" + generatedId);
         }
         return urls.toString();
-    }
+    }*/
+   @PostMapping()
+   String saveImage(@RequestParam("img") MultipartFile file, HttpServletRequest request) throws IOException {
+       long id = imageService.saveImage(file);
+       String baseUrl = request.getRequestURL().toString();
+       return baseUrl + "/" + id;
+   }
 
     @GetMapping("/{id}")
     ResponseEntity<byte[]> getImage(@PathVariable("id") String id) {
