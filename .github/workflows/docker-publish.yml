@@ -73,4 +73,4 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        run: cosign sign --key cosign.key "${{ steps.get-image-sha.outputs.sha }}"
+        run: cosign sign --key cosign.key "${REGISTRY}/${IMAGE_NAME}:${{ steps.get-image-sha.outputs.sha }}"
