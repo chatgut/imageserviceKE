@@ -69,6 +69,7 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+          COSIGN_NON_INTERACTIVE: 1
         run: cosign sign --yes \
           -a "repo=${{github.repository}}" \
           -a "workflow=${{github.workflow}}" \
