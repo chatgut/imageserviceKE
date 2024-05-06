@@ -29,6 +29,8 @@ Needs requestparam for the image ```img``` as a multipartfile in the body, 15MB 
 ```
 POST localhost:8042/image?img
 ```
+ ![image](https://github.com/chatgut/imageserviceke/assets/143023413/f6b284b7-d4a1-4bc7-b889-51d549705f9b)
+
 Get image from database, returns ResponseEntity with the pictures byte-array.
 ```
 GET localhost:8042/image/{id}
