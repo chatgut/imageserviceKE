@@ -9,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import se.iths.imageserviceke.service.ImageService;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/image")
@@ -21,10 +23,15 @@ public class ImageController {
     }
 
     @PostMapping()
-    String saveImage(@RequestParam("img") MultipartFile file, HttpServletRequest request) throws IOException {
-        long id = imageService.saveImage(file);
-        String baseUrl = request.getRequestURL().toString();
-        return baseUrl + "/" + id;
+    String saveMultipleImages(@RequestParam("img") Collection<MultipartFile> files,
+                              HttpServletRequest request) throws IOException {
+        Collection<String> urls = new ArrayList<>();
+        for (MultipartFile file : files) {
+            long generatedId = imageService.saveImage(file);
+            String baseUrl = request.getRequestURL().toString();
+            urls.add(baseUrl + "/" + generatedId);
+        }
+        return urls.toString();
     }
 
     @GetMapping("/{id}")

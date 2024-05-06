@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   imageservice:
-    image: ghcr.io/chatgut/imageserviceke:main
+    image: ghcr.io/chatgut/imageserviceke:latest
     depends_on:
       - imageserviceke-mysql
     ports:
