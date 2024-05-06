@@ -3,7 +3,7 @@ This microservice handles images where you can upload images to a database and r
 
 > [!IMPORTANT]
 >  Runs on port: ***8042*** <br>
->  Needs a Mysql connection on port: ***3306***
+>  ***Needs a Mysql connection***
 
 
 > [!NOTE]
