@@ -69,4 +69,4 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        run: cosign sign --key cosign.key "${REGISTRY}/${IMAGE_NAME}:${{ github.run_id }}"
+        run: cosign sign --key cosign.key "${REGISTRY}/${IMAGE_NAME}:${{ steps.meta.outputs.tags.sha }}"
