@@ -14,6 +14,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/image")
+@CrossOrigin
 public class ImageController {
 
     ImageService imageService;
