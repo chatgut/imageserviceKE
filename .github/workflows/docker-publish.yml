@@ -69,8 +69,8 @@ jobs:
         if: ${{ github.event_name != 'pull_request' }}
         env:
           COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
-        run: cosign sign --yes --key cosign.key \
+        run: cosign sign --yes \
           -a "repo=${{github.repository}}" \
           -a "workflow=${{github.workflow}}" \
           -a "ref=${{github.sha}}" \
-          "${REGISTRY}/${IMAGE_NAME}@${{ steps.build-and-push.outputs.digest }}"
+          --key cosign.key "${REGISTRY}/${IMAGE_NAME}@${{ steps.build-and-push.outputs.digest }}"
