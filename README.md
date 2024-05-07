@@ -2,8 +2,8 @@
 This microservice handles images where you can upload images to a database and retrieve them from the database.
 
 > [!IMPORTANT]
->  Runs on port: ***8042*** <br>
->  ***Needs a Mysql connection***
+>  Runs on port: ***8001*** <br>
+>  Needs a Mysql connection on port: ***3306***
 
 
 > [!NOTE]
@@ -25,17 +25,17 @@ If done correctly it should look like this: ![image](https://github.com/chatgut/
 
 ## API Endpoints
 Post image to database, returns URL for the saved image. <br>
-Needs requestparam for the image ```img``` as a multipartfile in the body, 15MB is max upload size for file.
+Needs requestparam for the image ```image``` as a multipartfile in the body, 15MB is max upload size for file.
 ```
-POST localhost:8042/image?img
+POST localhost:8001/images?image
 ```
- ![image](https://github.com/chatgut/imageserviceke/assets/143023413/f6b284b7-d4a1-4bc7-b889-51d549705f9b)
+![image](https://github.com/chatgut/imageserviceke/assets/143023413/38678e1d-acc1-4dcc-8acb-1522614615f1)
 
 Get image from database, returns ResponseEntity with the pictures byte-array.
 ```
-GET localhost:8042/image/{id}
+GET localhost:8001/images/{id}
 ```
 Delete image from database
 ```
-DELETE localhost:8042/image/{id}
+DELETE localhost:8001/images/{id}
 ```
