@@ -24,18 +24,22 @@ You can verify that the docker-image is signed from this repository by:
 If done correctly it should look like this: ![image](https://github.com/chatgut/imageserviceke/assets/143023413/3922ded6-f886-4586-ac8e-02995bc0b005)
 
 ## API Endpoints
-Post image to database, returns URL for the saved image. <br>
-Needs requestparam for the image ```image``` as a multipartfile in the body, 15MB is max upload size for file.
+**Post image to database, returns URL for the saved image. <br>
+Needs requestparam for the image ```image``` as a multipartfile in the body, 15MB is max upload size for file.**
 ```
 POST localhost:8001/images?image
 ```
 ![image](https://github.com/chatgut/imageserviceke/assets/143023413/38678e1d-acc1-4dcc-8acb-1522614615f1)
 
-Get image from database, returns ResponseEntity with the pictures byte-array.
+**Get image from database, returns ResponseEntity with the pictures byte-array.**
 ```
 GET localhost:8001/images/{id}
 ```
-Delete image from database
+**Get cropped thumbnail for image, 180px * 200px**
+``` 
+GET localhost:8001/images/{id}/thumbnail
+```
+**Delete image from database**
 ```
 DELETE localhost:8001/images/{id}
 ```
