@@ -42,9 +42,18 @@ public class ImageController {
         return new ResponseEntity<>(image.getImageBytes(), httpHeaders, HttpStatus.OK);
     }
 
+    @GetMapping("{id}/thumbnail")
+    ResponseEntity<byte[]> getImageThumbnail(@PathVariable("id") String id) throws IOException {
+        var httpHeaders = new HttpHeaders();
+        httpHeaders.add(HttpHeaders.CONTENT_TYPE, imageService.findById(id).getContentType());
+        var thumbnail = imageService.thumbnailiator(id);
+        return new ResponseEntity<>(thumbnail, httpHeaders, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     void deleteImage(@PathVariable("id") String id) {
         imageService.deleteById(id);
     }
+
 
 }
