@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("/image")
+@RequestMapping("/images")
 @CrossOrigin
 public class ImageController {
 
@@ -35,7 +35,7 @@ public class ImageController {
         return urls.toString();
     }*/
    @PostMapping()
-   String saveImage(@RequestParam("img") MultipartFile file, HttpServletRequest request) throws IOException {
+   String saveImage(@RequestParam("image") MultipartFile file, HttpServletRequest request) throws IOException {
        long id = imageService.saveImage(file);
        String baseUrl = request.getRequestURL().toString();
        return baseUrl + "/" + id;
